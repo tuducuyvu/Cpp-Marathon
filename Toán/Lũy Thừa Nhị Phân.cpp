@@ -10,6 +10,7 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
+// bin_pow code
 ll bin_mul(ll a,ll b,const ll &mod) // O( log(b) )
 {
   a %= mod;
@@ -45,6 +46,7 @@ ll bin_pow_large_mod(ll a,ll b,const ll &mod) // O( log(b) * log(mod) )
   }
   return ans;
 }
+//End bin_pow code
 
 int main()
 {

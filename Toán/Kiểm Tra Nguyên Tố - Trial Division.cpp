@@ -10,6 +10,7 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
+//Prime check code
 bool trial_check(ll n) // O( sqrt(n) )
 {
   if(n < 2)return 0; // 0 = false
@@ -29,7 +30,7 @@ bool trial_check(ll n) // O( sqrt(n) )
   }
   return 1;
 }
-
+//End prime check code
 
 int main()
 {

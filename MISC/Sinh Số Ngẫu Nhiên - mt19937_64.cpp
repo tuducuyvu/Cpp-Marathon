@@ -9,30 +9,21 @@ using namespace std;
 #define se second
 #define mk make_pair
 typedef pair<int,int> pii;
-const int maxn = 1e6 + 10;
-bool not_prime[maxn];
 
-//Prime sieve code
-void sieve_is_prime() // O( n * log(n) )
+//Random Number Generator code
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+ll random_range(ll l,ll r) // O(1)
 {
-  not_prime[0] = not_prime[1] = 1;//   1 = true
-  for(ll i = 2;i<maxn;i++)
-  {
-    if(!not_prime[i])
-    {
-      for(ll j = i * i;j<maxn;j+=i)not_prime[j] = 1;
-    }
-  }
+  return uniform_int_distribution<ll>(l,r)(rng);
 }
-//End Prime sieve code
+//End Random Number Generator code
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     
-    sieve_is_prime();
-    
+    cout<<random_range(12987,1271292698);
     
     return 0;
 }

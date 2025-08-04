@@ -10,6 +10,7 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
+
 // bin_pow code
 ll bin_mul(ll a,ll b,const ll &mod) // O( log(b) )
 {
@@ -100,12 +101,91 @@ bool prime_check_longlong(ll n) // O( log(n) ^ 2 )
 }
 //End prime check code
 
+//Random Number Generator code
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+ll random_range(ll l,ll r) // O(1)
+{
+  return uniform_int_distribution<ll>(l,r)(rng);
+}
+//End Random Number Generator code
+
+//Pollard Rho code
+ll f(ll a,ll b,ll mod) // O( log(a) )
+{
+  return (bin_mul(a,a,mod) + b)% mod;
+}
+
+ll rho(ll n) // O( n ^ 0.25 )
+{
+  while(1)
+  {
+    ll c = random_range(0,n-1);
+    ll x = random_range(0,n-1);
+    ll y = x;
+    ll g = 1;
+    while(g == 1)
+    {
+      x = f(x,c,n);
+      y = f(y,c,n);
+      y = f(y,c,n);
+      g = __gcd(abs(x-y),n);
+    }
+    if(g != n)return g;
+  }
+}
+//End Pollard Rho code
+
+// Small Prime Factor code
+void trial_division(ll n) // O( sqrt(n) )
+{
+  if(n < 2)return;
+  for(int k : {2,3,5})
+  {
+    while(n % k == 0)
+    {
+      cout<<k<<' ';
+      n/=k;
+    }
+  }
+  int i = 0;
+  const int next[] = {4,2,4,2,4,6,2,6};
+  for(ll k = 7;k*k <= n;k+=next[i++],i%=8)
+  {
+    while(n % k == 0)
+    {
+      cout<<k<<' ';
+      n/=k;
+    }
+  }
+  if(n>1)cout<<n<<' ';
+}
+//End Small Prime Factor code
+
+// Prime Factor Code
+void factorise(ll n) // O( n * 0.25 * log(n) )
+{
+  if(n < 10000)
+  {
+    trial_division(n);
+    return;
+  }
+  if(prime_check_longlong(n))
+  {
+    cout<<n<<' ';
+    return;
+  }
+  ll k = rho(n);
+  factorise(n/k);
+  factorise(k);
+}
+//End prime factor code
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     
-    
+    factorise(123456789101112);
     
     return 0;
 }

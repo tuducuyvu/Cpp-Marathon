@@ -10,6 +10,7 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
+// Small Prime Factor code
 void trial_division(ll n) // O( sqrt(n) )
 {
   if(n < 2)return;
@@ -32,9 +33,8 @@ void trial_division(ll n) // O( sqrt(n) )
     }
   }
   if(n>1)cout<<n<<' ';
-  cout<<'\n';
 }
-
+//End Small Prime Factor code
 
 int main()
 {
