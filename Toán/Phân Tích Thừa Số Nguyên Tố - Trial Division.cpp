@@ -9,27 +9,38 @@ using namespace std;
 #define se second
 #define mk make_pair
 typedef pair<int,int> pii;
-const int maxn = 1e6 + 10;
-bool not_prime[maxn];
 
-void sieve_is_prime() // O( n * log(n) )
+void trial_division(ll n) // O( sqrt(n) )
 {
-  not_prime[0] = not_prime[1] = 1;//   1 = true
-  for(ll i = 2;i<maxn;i++)
+  if(n < 2)return;
+  for(int k : {2,3,5})
   {
-    if(!not_prime[i])
+    while(n % k == 0)
     {
-      for(ll j = i * i;j<maxn;j+=i)not_prime[j] = 1;
+      cout<<k<<' ';
+      n/=k;
     }
   }
+  int i = 0;
+  const int next[] = {4,2,4,2,4,6,2,6};
+  for(ll k = 7;k*k <= n;k+=next[i++],i%=8)
+  {
+    while(n % k == 0)
+    {
+      cout<<k<<' ';
+      n/=k;
+    }
+  }
+  if(n>1)cout<<n<<' ';
+  cout<<'\n';
 }
+
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     
-    sieve_is_prime();
     
     
     return 0;

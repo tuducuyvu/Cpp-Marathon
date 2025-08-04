@@ -12,7 +12,7 @@ typedef pair<int,int> pii;
 const int maxn = 1e6 + 10;
 int small_prime_divisor[maxn];
 
-void sieve_prime_divisor()
+void sieve_prime_divisor() // O( n * log(n) )
 {
   small_prime_divisor[0] = small_prime_divisor[1] = 0;
   
