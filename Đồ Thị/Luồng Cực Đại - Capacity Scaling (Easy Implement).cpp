@@ -10,7 +10,7 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
-const int maxn = 1e3 + 10;
+const int maxn = 2e3 + 10;
 vector<int> adj[maxn];// Đồ Thị
 
 //https://cses.fi/problemset/task/1694
@@ -52,7 +52,7 @@ int dfs(int i,int e,int mn)
   return 0;
 }
 
-ll max_flow(int s,int e,int n)
+ll max_flow(int s,int e,int n) // O( m ^ 2 * log(require) )
 {
   ll ans = 0;
   int tmp;
