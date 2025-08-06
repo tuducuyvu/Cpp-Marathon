@@ -11,7 +11,7 @@ using namespace std;
 typedef pair<int,int> pii;
 
 //Diophantine code
-ll local_gcd(ll a,ll b,ll &x,ll &y)
+ll local_gcd(ll a,ll b,ll &x,ll &y) // O( log(min(a,b)) )
 {
   if(b==0)
   {
@@ -26,7 +26,7 @@ ll local_gcd(ll a,ll b,ll &x,ll &y)
   return ans;
 }
 
-bool diophantine(ll a,ll b,ll c, ll &x,ll &y,ll &g)
+bool diophantine(ll a,ll b,ll c, ll &x,ll &y,ll &g) // O( log(min(a,b)) )
 {
   g = local_gcd(abs(a),abs(b),x,y);
   if(c % g)return 0;
