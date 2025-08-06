@@ -18,6 +18,15 @@ vector<int> adj[maxn];// Đồ Thị
 vector <pii> edge[maxn][maxn]; // pairs of ( used_cap , cap )
 int cnt[maxn],t;
 int require = INT_MAX;
+
+void add_edge(int u,int v,int w)
+{
+  adj[u].pb(v);
+  adj[v].pb(u);
+  edge[u][v].pb(mk(0,w));//directed
+  edge[v][u].pb(mk(0,0));// mk(0,w) here if undirected
+}
+
 int dfs(int i,int e,int mn)
 {
   if(i == e)return mn;
@@ -42,6 +51,17 @@ int dfs(int i,int e,int mn)
   }
   return 0;
 }
+
+ll max_flow(int s,int e,int n)
+{
+  ll ans = 0;
+  int tmp;
+  for(;require;require>>=1)
+  {
+    while(++t,tmp = dfs(1,n,INT_MAX))ans+=tmp;
+  }
+  return ans;
+}
 //End Max Flow - Capacity Scaling (easy implement) code
 
 int main()
@@ -55,19 +75,10 @@ int main()
     {
       int u,v,w;
       cin>>u>>v>>w;
-      adj[u].pb(v);
-      adj[v].pb(u);
-      edge[u][v].pb(mk(0,w));//directed
-      edge[v][u].pb(mk(0,0));// mk(0,w) here if undirected
+      add_edge(u,v,w);
     }
     
-    ll ans = 0;
-    int tmp;
-    for(;require;require>>=1)
-    {
-      while(++t,tmp = dfs(1,n,INT_MAX))ans+=tmp;
-    }
-    cout<<ans;
+    cout<<max_flow(1,n,n);
     
     return 0;
 }
