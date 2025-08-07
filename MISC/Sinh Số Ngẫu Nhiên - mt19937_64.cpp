@@ -1,3 +1,8 @@
+//Random Number Generator
+/* documents
+https://codeforces.com/blog/entry/61587?locale=ru
+https://cplusplus.com/reference/random/mt19937/
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
