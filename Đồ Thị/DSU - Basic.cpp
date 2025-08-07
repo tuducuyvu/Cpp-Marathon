@@ -1,3 +1,9 @@
+// DSU
+/* documents
+https://wiki.vnoi.info/algo/data-structures/disjoint-set-union
+https://cp-algorithms.com/data_structures/disjoint_set_union.html
+https://usaco.guide/gold/dsu?lang=cpp
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,6 +21,7 @@ const int maxn = 1e6 + 10;
 //DSU code
 int p[maxn],s[maxn];// parent[] ,  size[]
 
+  // Initializes DSU: every node is its own parent
 void prepare() // O( n )
 {
   for(int i = 1;i<maxn;i++)
@@ -24,12 +31,14 @@ void prepare() // O( n )
   }
 }
 
-int fi(int i)// find parent
+  // Finds the root of node i with path compression
+int fi(int i)// find root
 {
   while(i != p[i])i = p[i] = p[p[i]]; // Path Compression -> O( 1 ) overall
   return i;
 }
 
+  // Unites the sets of u and v, returns true if merged
 bool unite(int u,int v) // O( 1 )
 {
   u = fi(u),v = fi(v);
