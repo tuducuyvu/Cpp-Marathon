@@ -1,3 +1,8 @@
+// MST Kruskal
+/* documents
+https://wiki.vnoi.info/algo/graph-theory/minimum-spanning-tree.md
+https://usaco.guide/gold/mst?lang=cpp
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,6 +20,7 @@ const int maxn = 1e6 + 10;
 //DSU code
 int p[maxn],s[maxn];// parent[] ,  size[]
 
+  // Initializes DSU: every node is its own parent
 void prepare() // O( n )
 {
   for(int i = 1;i<maxn;i++)
@@ -24,12 +30,14 @@ void prepare() // O( n )
   }
 }
 
-int fi(int i)// find parent
+  // Finds the root of node i with path compression
+int fi(int i)// find root
 {
   while(i != p[i])i = p[i] = p[p[i]]; // Path Compression -> O( 1 ) overall
   return i;
 }
 
+  // Unites the sets of u and v, returns true if merged
 bool unite(int u,int v) // O( 1 )
 {
   u = fi(u),v = fi(v);
@@ -54,14 +62,15 @@ struct Edge
 };
 vector<Edge>edge;
 
+  // Returns total weight of MST using Kruskal's algorithm.
 ll kruskal() // O( m * log (m) )
 {
-  prepare();
+  prepare(); // Initialize DSU
   ll ans = 0;
-  sort(all(edge));
+  sort(all(edge)); // Sort edges by weight
   for(Edge k : edge)
   {
-    if(unite(k.u,k.v))ans += k.w;
+    if(unite(k.u,k.v))ans += k.w; // Add weight if it connects different components
   }
   return ans;
 }

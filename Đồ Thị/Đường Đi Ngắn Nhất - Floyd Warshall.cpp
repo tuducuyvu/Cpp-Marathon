@@ -1,3 +1,7 @@
+//floydWarshall
+/* documents
+https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -11,9 +15,10 @@ using namespace std;
 typedef pair<int,int> pii;
 
 const int maxn = 5e2 + 10;
-ll adj[maxn][maxn]; // Đồ Thị
+ll adj[maxn][maxn]; // Đồ Thị ( Adjacency Matrix )
 
 //floydWarshall code
+  // Computes shortest paths between all pairs of nodes.
 void floydWarshall(int n) // O( n ^ 3 )
 {
   for(int mid = 1;mid<= n;mid++)
@@ -22,6 +27,7 @@ void floydWarshall(int n) // O( n ^ 3 )
     {
       for(int v = 1;v<=n;v++)
       {
+        // Try updating u->v path through node mid
         adj[u][v] = min(adj[u][v],adj[u][mid] + adj[mid][v]);
       }
     }
