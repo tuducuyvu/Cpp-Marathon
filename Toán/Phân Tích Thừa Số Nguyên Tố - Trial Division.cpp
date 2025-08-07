@@ -1,3 +1,8 @@
+// Small Prime Factor
+/* documents
+https://wiki.vnoi.info/vi/algo/math/integer-factorization
+https://cp-algorithms.com/algebra/factorization.html
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -14,7 +19,7 @@ typedef pair<int,int> pii;
 void trial_division(ll n) // O( sqrt(n) )
 {
   if(n < 2)return;
-  for(int k : {2,3,5})
+  for(int k : {2,3,5})// Remove small primes first
   {
     while(n % k == 0)
     {
@@ -24,6 +29,7 @@ void trial_division(ll n) // O( sqrt(n) )
   }
   int i = 0;
   const int next[] = {4,2,4,2,4,6,2,6};
+  // check for larger prime factors using 6k +/- 1 wheel
   for(ll k = 7;k*k <= n;k+=next[i++],i%=8)
   {
     while(n % k == 0)
@@ -32,7 +38,7 @@ void trial_division(ll n) // O( sqrt(n) )
       n/=k;
     }
   }
-  if(n>1)cout<<n<<' ';
+  if(n>1)cout<<n<<' '; // remaining n is prime
 }
 //End Small Prime Factor code
 

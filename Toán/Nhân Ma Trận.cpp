@@ -1,3 +1,8 @@
+//matrix
+/* documents
+https://wiki.vnoi.info/vi/algo/trick/matrix-multiplication
+ or wutanhung
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -16,8 +21,9 @@ struct matrix
 {
   ll ma[matrix_size][matrix_size];
   
-  matrix():ma()
+  matrix():ma() // base-case Initialization
   {
+    // Initialize all elements to 0
     for(int i = 0;i<matrix_size;i++)
     {
       for(int j = 0;j<matrix_size;j++)
@@ -27,8 +33,9 @@ struct matrix
     }
   };
   
-  matrix(bool ch):ma()
+  matrix(bool ch):ma() // Identity Matrix Initialize
   {
+    // Initialize as identity matrix if ch is true
     for(int i = 0;i<matrix_size;i++)
     {
       for(int j = 0;j<matrix_size;j++)
@@ -41,6 +48,7 @@ struct matrix
   
   matrix operator * (const matrix &o)const
   {
+    // matrix multiplication (modulo mod)
     matrix ans;
     for(int i = 0;i<matrix_size;i++)
     {

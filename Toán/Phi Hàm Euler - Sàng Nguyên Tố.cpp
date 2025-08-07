@@ -1,3 +1,9 @@
+// Phi Euler
+/* documents
+https://wiki.vnoi.info/vi/translate/he/Number-Theory-4
+https://cp-algorithms.com/algebra/phi-function.html
+https://codeforces.com/blog/entry/106851
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -9,21 +15,23 @@ using namespace std;
 #define se second
 #define mk make_pair
 typedef pair<int,int> pii;
+
 const int maxn = 1e6 + 10;
-int phi[maxn];
 
 // Phi Euler code
+int phi[maxn];
+  // Computes Euler's totient function for every number up to maxn
 void sieve_phi_euler() // O( n * log(n) )
 {
   for(int i = 1;i<maxn;i++)
   {
-    phi[i] = i;
+    phi[i] = i; // Initialize phi[i] to i
   }
   for(int i = 2;i<maxn;i++)
   {
-    if(phi[i] == i)
+    if(phi[i] == i) // i is prime
     {
-      for(int j = i;j<maxn;j+=i)phi[j] -= phi[j] / i;
+      for(int j = i;j<maxn;j+=i)phi[j] -= phi[j] / i; //    (!) j start from i, not i * i 
     }
   }
 }

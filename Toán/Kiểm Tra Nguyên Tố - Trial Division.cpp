@@ -1,3 +1,8 @@
+//Prime check
+/* documents
+https://wiki.vnoi.info/vi/algo/algebra/primality_check
+https://cp-algorithms.com/algebra/primality_tests.html#fermat-primality-test
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -11,6 +16,7 @@ using namespace std;
 typedef pair<int,int> pii;
 
 //Prime check code
+  // Returns true if n is prime, false otherwise
 bool trial_check(ll n) // O( sqrt(n) )
 {
   if(n < 2)return 0; // 0 = false
@@ -21,7 +27,8 @@ bool trial_check(ll n) // O( sqrt(n) )
   }
   int i = 0;
   const int next[] = {4,2,4,2,4,6,2,6};
-  for(ll k = 7;k*k <= n;k+=next[i++],i%=8)
+  
+  for(ll k = 7;k*k <= n;k+=next[i++],i%=8)// Use wheel factorization to skip obvious composites
   {
     if(n % k == 0)
     {

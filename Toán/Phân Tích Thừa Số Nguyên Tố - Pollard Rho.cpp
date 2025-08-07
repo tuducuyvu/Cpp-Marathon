@@ -1,3 +1,8 @@
+//Pollard Rho
+/* documents
+https://wiki.vnoi.info/vi/algo/math/integer-factorization
+https://cp-algorithms.com/algebra/factorization.html
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,39 +15,41 @@ using namespace std;
 #define mk make_pair
 typedef pair<int,int> pii;
 
-
 // bin_pow code
+  // Computes (a * b) % mod using binary multiplication to avoid overflow
 ll bin_mul(ll a,ll b,const ll &mod) // O( log(b) )
 {
   a %= mod;
   ll ans = 0;
   for(;b;b>>=1)
   {
-    if(b&1)ans = (ans + a) % mod;
-    a = (a + a) % mod;
+    if(b&1)ans = (ans + a) % mod; // Add a to result if lowest bit is set
+    a = (a + a) % mod; // Double a at each step
   }
   return ans;
 }
 
+  // Computes (a^b) % mod using binary exponentiation (mod is int)
 ll bin_pow(ll a,ll b,const int &mod) // O( log(b) )
 {
   a %= mod;
   ll ans = 1;
   for(;b;b>>=1)
   {
-    if(b&1)ans = ans * a % mod;
-    a = a * a % mod;
+    if(b&1)ans = ans * a % mod; // Multiply ans by a if lowest bit is set
+    a = a * a % mod; // Square a at each step
   }
   return ans;
 }
 
+  // Computes (a^b) % mod with large mod using safe multiplication
 ll bin_pow_large_mod(ll a,ll b,const ll &mod) // O( log(b) * log(mod) )
 {
   a %= mod;
   ll ans = 1;
   for(;b;b>>=1)
   {
-    if(b&1)ans = bin_mul(ans , a , mod);
+    if(b&1)ans = bin_mul(ans , a , mod); // Use bin_mul for safe multiplication
     a = bin_mul(a , a , mod);
   }
   return ans;
@@ -54,6 +61,8 @@ const vector<int> check_set = {2,3,5,7,11,13,17,19,23,29,31,37};
 
 bool check_composite_int(int a,int mod,int t,int m) // O( log(n) )
 {
+  // checks if 'a' is a composite witness for mod
+  // if you are confused, pls check documents
   ll n = bin_pow(a,m,mod);
   if(n == 1 || n == mod-1)return 0;
   while(t--)
@@ -66,11 +75,12 @@ bool check_composite_int(int a,int mod,int t,int m) // O( log(n) )
 
 bool prime_check_int(int n) // O( log(n) ^ 2 )
 {
+  // Miller-Rabin test for int n
   for(int k : check_set)if(n == k)return 1;
   if(n < 41)return 0;
   
   int m = n - 1;
-  int t = __builtin_ctz(m);
+  int t = __builtin_ctz(m); // Count trailing zeros in (n-1)
   m>>=t;
   for(int k : check_set)if(check_composite_int(k,n,t,m))return 0;
   return 1;
@@ -78,6 +88,7 @@ bool prime_check_int(int n) // O( log(n) ^ 2 )
 
 bool check_composite_longlong(ll a,ll mod,int t,ll m) // O( log(n) )
 {
+  // checks if 'a' is a composite witness for mod (long long)
   ll n = bin_pow_large_mod(a,m,mod);
   if(n == 1 || n == mod-1)return 0;
   while(t--)
@@ -90,11 +101,12 @@ bool check_composite_longlong(ll a,ll mod,int t,ll m) // O( log(n) )
 
 bool prime_check_longlong(ll n) // O( log(n) ^ 2 )
 {
+  // Miller-Rabin test for long long n
   for(int k : check_set)if(n == k)return 1;
   if(n < 41)return 0;
   
   ll m = n - 1;
-  int t = __builtin_ctzll(m);
+  int t = __builtin_ctzll(m); // Count trailing zeros in (n-1)
   m>>=t;
   for(int k : check_set)if(check_composite_longlong(k,n,t,m))return 0;
   return 1;
@@ -110,11 +122,13 @@ ll random_range(ll l,ll r) // O(1)
 //End Random Number Generator code
 
 //Pollard Rho code
+  // Polynomial function used in Pollard Rho to generate pseudorandom sequence
 ll f(ll a,ll b,ll mod) // O( log(a) )
 {
   return (bin_mul(a,a,mod) + b)% mod;
 }
 
+  // Returns a divisor of n using Pollard Rho
 ll rho(ll n) // O( n ^ 0.25 )
 {
   while(1)
@@ -123,6 +137,7 @@ ll rho(ll n) // O( n ^ 0.25 )
     ll x = random_range(0,n-1);
     ll y = x;
     ll g = 1;
+    // Main loop to try finding a non-trivial gcd (cycle detection)
     while(g == 1)
     {
       x = f(x,c,n);
@@ -130,7 +145,7 @@ ll rho(ll n) // O( n ^ 0.25 )
       y = f(y,c,n);
       g = __gcd(abs(x-y),n);
     }
-    if(g != n)return g;
+    if(g != n)return g; // Return the factor found
   }
 }
 //End Pollard Rho code
@@ -139,7 +154,7 @@ ll rho(ll n) // O( n ^ 0.25 )
 void trial_division(ll n) // O( sqrt(n) )
 {
   if(n < 2)return;
-  for(int k : {2,3,5})
+  for(int k : {2,3,5})// Remove small primes first
   {
     while(n % k == 0)
     {
@@ -149,6 +164,7 @@ void trial_division(ll n) // O( sqrt(n) )
   }
   int i = 0;
   const int next[] = {4,2,4,2,4,6,2,6};
+  // check for larger prime factors using 6k +/- 1 wheel
   for(ll k = 7;k*k <= n;k+=next[i++],i%=8)
   {
     while(n % k == 0)
@@ -157,26 +173,27 @@ void trial_division(ll n) // O( sqrt(n) )
       n/=k;
     }
   }
-  if(n>1)cout<<n<<' ';
+  if(n>1)cout<<n<<' '; // remaining n is prime
 }
 //End Small Prime Factor code
 
 // Prime Factor Code
+  // Recursively factorizes n into primes using Pollard Rho and trial division
 void factorise(ll n) // O( n * 0.25 * log(n) )
 {
   if(n < 10000)
   {
-    trial_division(n);
+    trial_division(n); // Use trial division for small n
     return;
   }
   if(prime_check_longlong(n))
   {
-    cout<<n<<' ';
+    cout<<n<<' '; // n is prime
     return;
   }
   ll k = rho(n);
-  factorise(n/k);
-  factorise(k);
+  factorise(n/k); // Factorize the quotient recursively
+  factorise(k);   // Factorize the found factor
 }
 //End prime factor code
 

@@ -1,3 +1,11 @@
+// Large Phi Euler
+/* documents
+https://wiki.vnoi.info/vi/translate/he/Number-Theory-4
+https://cp-algorithms.com/algebra/phi-function.html
+https://codeforces.com/blog/entry/106851
+https://wiki.vnoi.info/vi/algo/math/integer-factorization
+https://cp-algorithms.com/algebra/factorization.html
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
