@@ -20,7 +20,8 @@ const int maxn = 5e2 + 10;
 //Fenwick 3D code
 ll bit[maxn][maxn][maxn];
 
-void up(int I,int J,int K,int val) // add val to coordinate (I,J,K)
+  // add val to coordinate (I,J,K) 
+void up(int I,int J,int K,int val) // O( log(n) ^ 3 )
 {
   for(int i = I;i<maxn;i+=i&-i)
   {
@@ -31,12 +32,13 @@ void up(int I,int J,int K,int val) // add val to coordinate (I,J,K)
   }
 }
 
-ll cal(int I,int J,int K) // calculate sum of 3D prefix ( [1..I] , [1..J] , [1..K] )
+  // calculate sum of 3D prefix ( [1..I] , [1..J] , [1..K] )
+ll cal(int I,int J,int K)  //  O( log(n) ^ 3 )
 {
   ll ans = 0;
   for(int i = I;i;i-=i&-i)
   {
-    for(int j = J;j;j-=j&-j)
+    for(int j = J;j;j-=j&-j) 
     {
       for(int k = K;k;k-=k&-k)ans += bit[i][j][k];
     }

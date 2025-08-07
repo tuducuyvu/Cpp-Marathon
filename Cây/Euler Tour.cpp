@@ -21,7 +21,7 @@ vector<int> adj[maxn]; // Đồ Thị (Graph adjacency list)
 //Euler tour code
 int depth[maxn], in[maxn], out[maxn], t;
 
-void dfs(int i, int pa)
+void dfs(int i, int pa) // O( n )
 {
   depth[i] = depth[pa]+1;
   in[i] = ++t;            // entry time
