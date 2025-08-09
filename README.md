@@ -17,18 +17,36 @@ Khi mới bắt đầu học cp, mình thường gặp khó khăn trong việc t
 
 Vì thế, mình tạo repo này với mục tiêu:
 
-- 👉👈 **Chia sẻ các đoạn code mẫu chuẩn hóa, rõ ràng, đã test** (maybe🐧)
+- 👉👈 **Chia sẻ các đoạn code mẫu chuẩn hóa, rõ ràng, đã test** (~maybe~🐧)
 
-- 🧠 **Hướng tới hiểu bản chất, không chỉ Ctrl C V** ( coi chừng t nha Đ.Kiên )
+- 🧠 **Hướng tới hiểu bản chất, không chỉ Ctrl C V** ( *nha Đ.Kiên* )
 
 - 🔥 **Giúp các bạn cùng học, đặc biệt là các thế hệ đội tuyển sau, có thể tiếp cận thuật toán một cách nhanh chóng, hiệu quả**
 
+***Hi vọng repo này sẽ phần nào giúp bạn tiết kiệm thời gian, giảm bớt rào cản khi học và có một nơi để tham khảo nhanh.***
 
-Hi vọng repo này sẽ phần nào giúp bạn tiết kiệm thời gian, giảm bớt rào cản khi học và có một nơi để tham khảo nhanh.
 ---
 
-- Nếu mn có thắc mắc thì có thể tạo Issue trong cái repo này hoặc là ib mình trên messenger ( coi code ở mấy chỗ khác chắc ko ib được tác giả đâu nhỉ🐧 )
-- Nếu mn muốn góp code của chính mình vào đây thì có thể Pull Request ( hoặc ib mình tiếp 👉👈 )
+## Một Số Nguồn Tài Liệu Hay
+- [VNOI WIKI](https://wiki.vnoi.info/)
+- [cp-algorithms](https://cp-algorithms.com/index.html)
+- [USACO Guide](https://usaco.guide/dashboard/)
+- [CP Handbook](https://usaco.guide/CPH.pdf#page=3)
+- [youkn0wwho topic list](https://youkn0wwho.academy/topic-list)
+- [Topcoder](https://www.topcoder.com/thrive/tracks?track=Competitive%20Programming)
+- [Visualgo](https://visualgo.net/en)
+## Một Số Nguồn Bài Hay
+- [CSES](https://cses.fi/problemset/list/)
+- [USACO Guide](https://usaco.guide/dashboard/)
+- [youkn0wwho topic list](https://youkn0wwho.academy/topic-list)
+- [VNOJ](https://oj.vnoi.info/)
+- [Codeforces](https://codeforces.com/problemset#)
+- [OJUZ](https://oj.uz/)
+  
+---
+
+- Nếu mọi người có thắc mắc thì có thể Open Issue trong cái repo này hoặc là ib mình trên messenger ( coi code ở mấy chỗ khác chắc không ib được tác giả đâu nhỉ🐧 )
+- Nếu mọi người muốn góp code của chính mình vào đây thì có thể Pull Request ( hoặc ib mình luôn 👉👈 )
 
 ---
 🎯 *"Chúc các em học tập tốt và luôn giữ lửa đam mê với giải thuật!" -wutanhung*
