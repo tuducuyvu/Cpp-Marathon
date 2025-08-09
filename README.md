@@ -17,7 +17,7 @@ Khi mới bắt đầu học cp, mình thường gặp khó khăn trong việc t
 
 Vì thế, mình tạo repo này với mục tiêu:
 
-- 👉👈 **Chia sẻ các đoạn code mẫu chuẩn hóa, rõ ràng, đã test** (maybe🐧, mình test r mà mn cứ tự test cho chắc)
+- 👉👈 **Chia sẻ các đoạn code mẫu chuẩn hóa, rõ ràng, đã test** (maybe🐧)
 
 - 🧠 **Hướng tới hiểu bản chất, không chỉ Ctrl C V** ( coi chừng t nha Đ.Kiên )
 
@@ -27,8 +27,8 @@ Vì thế, mình tạo repo này với mục tiêu:
 Hi vọng repo này sẽ phần nào giúp bạn tiết kiệm thời gian, giảm bớt rào cản khi học và có một nơi để tham khảo nhanh.
 ---
 
-- Nếu mn có thắc mắc thì có thể tạo Issue trong cái repo này hoặc là ib mình trên messenger ( coi code ở mấy chỗ khác chắc ko ib được tác giả đâu nhỉ 😏😏😏 )
-- Nếu mn muốn góp code của chính mình vào đây thì có thể Pull Request ( hoặc ib tiếp 👉👈 )
+- Nếu mn có thắc mắc thì có thể tạo Issue trong cái repo này hoặc là ib mình trên messenger ( coi code ở mấy chỗ khác chắc ko ib được tác giả đâu nhỉ🐧 )
+- Nếu mn muốn góp code của chính mình vào đây thì có thể Pull Request ( hoặc ib mình tiếp 👉👈 )
 
 ---
 🎯 *"Chúc các em học tập tốt và luôn giữ lửa đam mê với giải thuật!" -wutanhung*
