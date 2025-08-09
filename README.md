@@ -4,7 +4,7 @@
 
 
 
-Khi mới bắt đầu học cp, mình thường gặp khó khăn trong việc tìm những đoạn code mẫu (ngắn🐧?), dễ hiểu. Dù có rất nhiều source ngoài kia, nhưng phần lớn:
+Khi mới bắt đầu học cp, mình thường gặp khó khăn trong việc tìm những đoạn code mẫu (ngắn🐧?), dễ hiểu. Dù có rất nhiều resources ngoài kia, nhưng phần lớn:
 
 - Viết bẩn hoặc quá ngắn gọn, khó hiểu với người mới
 
